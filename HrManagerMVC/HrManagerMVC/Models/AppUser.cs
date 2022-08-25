@@ -1,0 +1,59 @@
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace HrManagerMVC.Models
+{
+    public class AppUser:IdentityUser
+    {
+        [Required]
+        [MaxLength(30)]
+        public string FullName { get; set; }
+        [Required]
+        public double Salary { get; set; }
+        [Required]
+        public DateTime BirthDate { get; set; }
+        [Required]
+        public DateTime JoinDate { get; set; }
+        
+        public DateTime IsQuitedDate { get; set; }
+
+        [Required]
+        [MaxLength(7)]
+        public string FinNo { get; set; }
+        [Required]
+        [MaxLength(9)]
+        public string SeriaNo { get; set; }
+        public bool? IsQuitted { get; set; }
+        public int GenderId { get; set; }
+        public bool IsDepartmentHead { get; set; }
+        public Gender Gender { get; set; }
+        public int StatusId { get; set; }
+        public Status Status { get; set; }
+        public string Image { get; set; }
+        public int DepartmentId { get; set; }
+        public Departments Department { get; set; }
+
+        public string ConnectionId { get; set; }
+        public DateTime ConnectedAt { get; set; }
+
+
+
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
+        public List<Warnings> Warnings { get; set; }
+        public List<Attendance> Attendance { get; set; }
+        public List<EmployeeProjects> EmployeeProjects { get; set; } = new List<EmployeeProjects>();
+        
+
+
+
+
+
+    }
+}

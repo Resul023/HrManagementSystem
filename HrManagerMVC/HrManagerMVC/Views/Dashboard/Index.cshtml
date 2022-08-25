@@ -1,0 +1,340 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> _userManager
+@{
+    ViewData["Title"] = "Index";
+}
+@section DashboardCss{
+    <!-- bootstrap  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- own  -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <!-- fontawesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+}
+@model DashboardViewModel
+@{
+    double totalSalary = 0;
+    @foreach (var item in Model.Employees)
+    {
+        totalSalary += item.Salary;
+    }
+    AppUser user = null;
+    if (User.Identity.IsAuthenticated)
+    {
+        user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+    }
+
+}
+<style>
+    .btn-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+<div id="main-content" class="dashboard">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="start-dashboard col-md-6 col-sm-12">
+                <h2 class="m-0 fs-5">
+                    <a class="btn btn-arrow btn-sm btn-link ps-0 btn-toggle-fullwidth">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                    Dashboard
+                </h2>
+                <ul class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Lucid</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ul>
+            </div>
+            <div class="end-dashboard col-md-6 col-sm-12">
+                <div class="d-inline-flex icon-text">
+                    <div class="me-2">
+                        <h6 class="mb-0"><i class="fa fa-user"></i> 1,784</h6>
+                        <small>Visitors</small>
+
+                    </div>
+                </div>
+                <div class="d-inline-flex icon-text ms-lg-3 me-lg-3 ms-1 me-1">
+                    <div class="me-2">
+                        <h6 class="mb-0"><i class="fa fa-globe"></i> 325</h6>
+                        <small>Visits</small>
+                    </div>
+                </div>
+                <div class="d-inline-flex icon-text">
+                    <div class="me-2">
+                        <h6 class="mb-0"><i class="fa fa-comments"></i> 13</h6>
+                        <small>Chats</small>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="card top-count">
+                    <div class="list-group list-group-custom list-group-flush">
+                        <div class="list-group-item d-flex align-items-center ">
+                            <div class="icon text-center me-3"><i class="fa fa-user"></i></div>
+                            <div class="content">
+                                <div>New Employee</div>
+                                <h5 class="mb-0">@Model.Employees.Where(x => (x.JoinDate.Month - DateTime.UtcNow.Month) < 1).Count()</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group list-group-custom list-group-flush">
+                        <div class="list-group-item d-flex align-items-center ">
+                            <div class="icon text-center me-3"><i class="fa-solid fa-users"></i></div>
+                            <div class="content">
+                                <div>Total Employee</div>
+                                <h5 class="mb-0">@Model.Employees.Count()</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group list-group-custom list-group-flush">
+                        <div class="list-group-item d-flex align-items-center ">
+                            <div class="icon text-center me-3"><i class="fa-solid fa-landmark"></i></div>
+                            <div class="content">
+                                <div>Total Salary</div>
+                                @if (totalSalary > 999)
+                                {
+                                    var result = (totalSalary / 1000).ToString() + "K";
+                                    <h5 class="mb-0">@result</h5>
+
+                                }
+                                else if (totalSalary > 999999)
+                                {
+                                    var result = (totalSalary / 1000).ToString() + "M";
+                                    <h5 class="mb-0">@result</h5>
+                                }
+                                else
+                                {
+                                    <h5 class="mb-0">@totalSalary</h5>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group list-group-custom list-group-flush">
+                        <div class="list-group-item d-flex align-items-center">
+                            <div class="icon text-center me-3"><i class="fa-solid fa-landmark"></i></div>
+                            <div class="content">
+                                <div>Avg. Salary</div>
+                                <h5 class="mb-0">$@(totalSalary/ Model.Employees.Count())</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="card chart">
+                    <canvas id="pie-chart"></canvas>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12">
+                <div class="card stacked">
+                    <canvas id="bar-chart-grouped"></canvas>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-12 col-md-12">
+                <div class="card line-chart">
+                    <canvas id="line-chart"></canvas>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-12 col-md-12">
+                <div class="card todo-list">
+                    <div class="text-btn">
+                        <h6>ToDo List</h6>
+                        <a type="button" asp-controller="dashboard" asp-action="create" class="btn btn-primary btn-list">
+                            Add
+                        </a>
+
+
+                    </div>
+                    @foreach (var item in Model.Todolists)
+                    {
+                        if (item.EmployeeId == user.Id)
+                        {
+                            <div class="list">
+                                <div class="list-item">
+                                    <div class="item-text">
+                                        <input class="form-check-input" type="checkbox" value="" id="@item.Id">
+                                        <label class="form-check-label" for="@item.Id">
+                                            <strong>@item.Title</strong>
+                                        </label>
+                                        <span class="text-muted d-flex small">@item.Desc</span>
+                                    </div>
+
+                                    <div class="action-btn d-flex">
+                                        <a type="button" asp-controller="dashboard" asp-action="delete" asp-route-Id="@item.Id" class="btn btn-danger sweet-delete"><i class="fa-solid fa-trash"></i></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+                        else
+                        {
+
+                        }
+
+                    }
+
+
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-7 col-md-12">
+                <div class="card employee-table">
+                    <h6>Department Heads</h6>
+                    <table class="table align-middle mb-0 bg-white">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Position</th>
+                                <th>Age</th>
+                                <th>Projects</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var employee in Model.Employees)
+                            {
+                                if (employee.IsDepartmentHead)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="~/upload/employee/@employee.Image" alt=""
+                                                     style="width: 45px; height: 45px" class="rounded-circle" />
+                                                <div class="ms-3">
+                                                    <p class="fw-bold mb-1">@employee.FullName</p>
+                                                    <p class="text-muted mb-0">@employee.Email</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="fw-normal mb-1">@employee.Department.DepartmentName</p>
+                                        </td>
+                                        <td>@employee.Status.StatusName</td>
+                                        <td>@(DateTime.UtcNow.Year- employee.BirthDate.Year)</td>
+
+                                        <td>
+                                            @employee.EmployeeProjects.Count()
+                                        </td>
+
+
+                                    </tr>
+                                }
+
+                            }
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-5 col-md-12">
+                <div class="card donat-chart">
+                    <h6>Employee Structure</h6>
+                    <canvas id="doughnut-chart"></canvas>
+                    <div class="text d-flex">
+                        <div class="employe-gender mb-3 mt-4">
+                            <span class="text-muted small">Male</span>
+                            <h4 class="mb-0">@((Model.Employees.Where(x=>x.GenderId == 1).Count()*100)/Model.Employees.Count())%</h4>
+                        </div>
+                        <div class="employe-gender mb-3 mt-4">
+                            <span class="text-muted small">Female</span>
+                            <h4 class="mb-0">@((Model.Employees.Where(x=>x.GenderId == 2).Count()*100)/Model.Employees.Count())%</h4>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <table id="genderTable" style="display:none;">
+                <tr>
+                    <td>@((Model.Employees.Where(x=>x.GenderId == 1).Count()*100)/Model.Employees.Count())</td>
+                    <td>@((Model.Employees.Where(x=>x.GenderId == 2).Count()*100)/Model.Employees.Count())</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+@{
+    var male = (Model.Employees.Where(x => x.GenderId == 1).Count() * 100) / Model.Employees.Count();
+    var female = (Model.Employees.Where(x => x.GenderId == 2).Count() * 100) / Model.Employees.Count();
+}
+@section DashboardScript{
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <!-- jquery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--plugin stackbar  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="~/assets/vendor/stacked-bar.js"></script>
+    <!-- own js  -->
+
+    <script src="~/assets/Js/main.js"></script>
+    <script src="~/assets/Js/stack.js"></script>
+
+    <!-- plugin pie chart -->
+    <script>
+        new Chart(document.getElementById("pie-chart"), {
+            type: 'pie',
+            data: {
+                labels: ["Design", "Dev", "Seo",],
+                datasets: [{
+                    label: "Population (millions)",
+                    backgroundColor: ["#f68c1f", "#583D72", "#ded5c4"],
+                    data: [84.5, 10.2, 5.3]
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Income Analysis %'
+
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    <!-- plugin line-chart -->
+    <script src="~/assets/vendor/line-chart.js"></script>
+    <!-- plugin donat-chart -->
+    <script>
+        new Chart(document.getElementById("doughnut-chart"), {
+
+            type: 'doughnut',
+            data: {
+                labels: ["Male", "Female"],
+                datasets: [
+                    {
+                        label: "Population (millions)",
+                        backgroundColor: ["#fd7e14", "#8e5ea2",],
+                       @Html.Raw("data :"+ "["+ male+","+female+ "]")
+                    }
+                ]
+            },
+            options: {
+                title: {
+                    display: true,
+
+                }
+            }
+        });
+    </script>
+}
+
