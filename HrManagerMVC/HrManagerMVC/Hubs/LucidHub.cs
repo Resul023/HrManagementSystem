@@ -51,5 +51,12 @@ namespace HrManagerMVC.Hubs
                 }
             }
         }
+        public async Task SendMessageInbox(string text,string TUserId)
+        {
+            var TUser = await _userManager.FindByIdAsync(TUserId);
+            var FUser = await _userManager.FindByNameAsync(Context.User.Identity.Name);
+            var sentAt = DateTime.Now;
+            await Clients.Clients(TUser.ConnectionId, FUser.ConnectionId).SendAsync("ReceiveMessage", text, sentAt, FUser.Id);
+        }
     }
 }

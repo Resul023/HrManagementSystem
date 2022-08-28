@@ -42,22 +42,29 @@ namespace HrManagerMVC.Controllers
             {
                 ModelState.AddModelError("StartDate", "Start date must be small than End date ");
             }
-            foreach (var item in _context.Holidays)
+            if (_context.Holidays.Count()>0)
             {
-                if ((holiday.StartDate < item.StartDate && holiday.EndDate < item.StartDate) || (holiday.StartDate > item.EndDate))
+                foreach (var item in _context.Holidays)
                 {
-                    _context.Add(holiday);
+                    if ((holiday.StartDate < item.StartDate && holiday.EndDate < item.StartDate) || (holiday.StartDate > item.EndDate))
+                    {
+                        _context.Holidays.Add(holiday);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("StartDate", "Your holiday is falling in a row with other holidays");
+                    }
                 }
-                else
-                {
-                    ModelState.AddModelError("StartDate", "Your holiday is falling in a row with other holidays");
-                }
+            }
+            else
+            {
+                _context.Holidays.Add(holiday);
             }
             if (!ModelState.IsValid)
             {
                 return View();
             }
-            
+           
             _context.SaveChanges();
             return RedirectToAction("index");
         }

@@ -189,3 +189,4 @@ C:\Users\User\Desktop\Final Project-Backend\HrManagerMVC\HrManagerMVC\bin\Debug\
 C:\Users\User\Desktop\Final Project-Backend\HrManagerMVC\HrManagerMVC\obj\Debug\netcoreapp3.1\Razor\Views\Login\ResetPassword.cshtml.g.cs
 C:\Users\User\Desktop\Final Project-Backend\HrManagerMVC\HrManagerMVC\obj\Debug\netcoreapp3.1\Razor\Views\ChatApp\Index.cshtml.g.cs
 C:\Users\User\Desktop\Final Project-Backend\HrManagerMVC\HrManagerMVC\bin\Debug\netcoreapp3.1\libman.json
+C:\Users\User\Desktop\Final Project-Backend\HrManagerMVC\HrManagerMVC\obj\Debug\netcoreapp3.1\HrManagerMVC.csproj.AssemblyReference.cache

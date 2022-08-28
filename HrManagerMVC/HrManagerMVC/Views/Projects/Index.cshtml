@@ -48,7 +48,7 @@
                 </h2>
                 <ul class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="index.html">Lucid</a></li>
-                    <li class="breadcrumb-item active">Holidays</li>
+                    <li class="breadcrumb-item active">Project Status</li>
                 </ul>
             </div>
             <div class="end-dashboard col-md-6 col-sm-12">
@@ -196,9 +196,13 @@
                                                 }
                                             </td>
                                             <th>
+                                                @if (projects.IsDone!= true)
+                                                {
                                                 <a type="button" asp-controller="Projects" asp-action="Edit" asp-route-Id="@projects.Id" class="btn btn-warning btn-list ">
                                                     <i class="fa-solid fa-marker"></i>
                                                 </a>
+                                                }
+                                                
                                                 <a type="button" asp-controller="Projects" asp-action="Delete" asp-route-Id="@projects.Id" class="btn btn-danger sweet-delete"><i class="fa-solid fa-trash"></i></a>
                                             </th>
                                         </tr>

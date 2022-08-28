@@ -25,6 +25,7 @@ namespace HrManagerMVC.DAL
         public DbSet<Todolist> Todolists { get; set; }
         public DbSet<Projects> Projects { get; set; }
         public DbSet<Vacation> Vacations { get; set; }
+        public DbSet<SendMessage> Messages { get; set; }
 
     }
 }
