@@ -33,8 +33,15 @@ using HrManagerMVC.ViewModel;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\User\Desktop\Final Project-Backend\HrManagerMVC\HrManagerMVC\Views\_ViewImports.cshtml"
+using HrManagerMVC.DAL;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6a2fb3a2c86a0202da03b28a6df5dde2857b5583", @"/Views/Holidays/Edit.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"acb941a7da423774d6832b780a09d3978c510f4c", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"33e6b80ee8d40eadfa1dfaa751f20235f6d0783a", @"/Views/_ViewImports.cshtml")]
     public class Views_Holidays_Edit : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Holidays>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/assets/image/user.png"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -135,7 +142,7 @@ using HrManagerMVC.ViewModel;
     <div class=""user-account p-3 mb-3"">
         <div class=""user-info d-flex mb-3 pb-3 border-bottom align-items-center"">
             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "6a2fb3a2c86a0202da03b28a6df5dde2857b558314668", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "6a2fb3a2c86a0202da03b28a6df5dde2857b558314869", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -195,7 +202,7 @@ using HrManagerMVC.ViewModel;
         <div class=""tab-pane fade show active"" id=""nav-home"" role=""tabpanel"" aria-labelledby=""nav-home-tab"">
             <ul class=");
             WriteLiteral("\"list-hr\">\r\n                <li class=\"list-item  d-flex\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558318073", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558318274", async() => {
                 WriteLiteral("\r\n                        <i class=\"fa-solid fa-gauge-high\"></i>\r\n                        <span>HR Dashboard</span>\r\n                    ");
             }
             );
@@ -214,7 +221,7 @@ using HrManagerMVC.ViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                </li>\r\n                <li class=\"list-item active-itemlist d-flex\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558319769", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558319970", async() => {
                 WriteLiteral("\r\n                        <i class=\"fa-solid fa-list\"></i>\r\n                        <span>Holidays</span>\r\n                    ");
             }
             );
@@ -233,7 +240,7 @@ using HrManagerMVC.ViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                </li>\r\n                <li class=\"list-item d-flex\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558321439", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558321640", async() => {
                 WriteLiteral("\r\n                        <i class=\"fa-solid fa-calendar-days\"></i>\r\n                        <span>Events</span>\r\n                    ");
             }
             );
@@ -252,7 +259,7 @@ using HrManagerMVC.ViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                </li>\r\n                <li class=\"list-item d-flex\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558323116", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558323317", async() => {
                 WriteLiteral("\r\n                        <i class=\"fa-solid fa-users\"></i>\r\n                        <span>Employees</span>\r\n                    ");
             }
             );
@@ -271,7 +278,7 @@ using HrManagerMVC.ViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                </li>\r\n                <li class=\"list-item d-flex\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558324788", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558324989", async() => {
                 WriteLiteral("\r\n                        <i class=\"fa-solid fa-user\"></i>\r\n                        <span>Attendance</span>\r\n                    ");
             }
             );
@@ -290,7 +297,7 @@ using HrManagerMVC.ViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                </li>\r\n                <li class=\"list-item d-flex\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558326460", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558326661", async() => {
                 WriteLiteral("\r\n                        <i class=\"fa-solid fa-building\"></i>\r\n                        <span>Departments </span>\r\n                    ");
             }
             );
@@ -309,7 +316,7 @@ using HrManagerMVC.ViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                </li>\r\n                <li class=\"list-item d-flex\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558328140", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558328341", async() => {
                 WriteLiteral("\r\n                        <i class=\"fa-solid fa-clipboard-user\"></i>\r\n                        <span>Status</span>\r\n                    ");
             }
             );
@@ -328,7 +335,7 @@ using HrManagerMVC.ViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                </li>\r\n                <li class=\"list-item d-flex\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558329820", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558330021", async() => {
                 WriteLiteral("\r\n                        <i class=\"fa-solid fa-sitemap\"></i>\r\n                        <span>Designation</span>\r\n                    ");
             }
             );
@@ -347,7 +354,7 @@ using HrManagerMVC.ViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                </li>\r\n                <li class=\"list-item  d-flex\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558331499", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558331700", async() => {
                 WriteLiteral("\r\n                        <i class=\"fa-solid fa-umbrella-beach\"></i>\r\n                        <span>Vacation Status</span>\r\n                    ");
             }
             );
@@ -366,7 +373,7 @@ using HrManagerMVC.ViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                </li>\r\n                <li class=\"list-item d-flex\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558333188", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558333389", async() => {
                 WriteLiteral("\r\n                        <i class=\"fa-solid fa-folder-tree\"></i>\r\n                        <span>Project Status</span>\r\n                    ");
             }
             );
@@ -393,7 +400,7 @@ using HrManagerMVC.ViewModel;
             <ul class=""list-hr"">
                 <li class=""list-item d-flex"">
                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558335053", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558335254", async() => {
                 WriteLiteral("\r\n                        <i class=\"fa-solid fa-gauge-high\"></i>\r\n                        <span>DashboardPr</span>\r\n                    ");
             }
             );
@@ -412,7 +419,7 @@ using HrManagerMVC.ViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                </li>\r\n                <li class=\"list-item d-flex\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558336734", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558336935", async() => {
                 WriteLiteral("\r\n                        <i class=\"fa-solid fa-message\"></i>\r\n                        <span>ChatApp</span>\r\n                    ");
             }
             );
@@ -431,7 +438,7 @@ using HrManagerMVC.ViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                </li>\r\n                <li class=\"list-item d-flex\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558338408", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558338609", async() => {
                 WriteLiteral("\r\n                        <i class=\"fa-solid fa-folder-tree\"></i>\r\n                        <span>Projects</span>\r\n                    ");
             }
             );
@@ -502,9 +509,9 @@ using HrManagerMVC.ViewModel;
             <div class=""col-12 card mt-4"">
                 <div class=""change-data mt-3"">
                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558341929", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558342130", async() => {
                 WriteLiteral("\r\n                        <div class=\"input-group d-flex\">\r\n                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "6a2fb3a2c86a0202da03b28a6df5dde2857b558342278", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "6a2fb3a2c86a0202da03b28a6df5dde2857b558342479", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -529,7 +536,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                        </div>\r\n                        <div class=\"mb-3 \">");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("span", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558344259", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("span", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558344460", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationMessageTagHelper>();
@@ -550,7 +557,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper.For = ModelExpr
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("</div>\r\n                        <div class=\"input-group\">\r\n                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "6a2fb3a2c86a0202da03b28a6df5dde2857b558345931", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "6a2fb3a2c86a0202da03b28a6df5dde2857b558346132", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -575,7 +582,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                        </div>\r\n                        <div class=\"mb-3\">");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("span", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558347909", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("span", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558348110", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationMessageTagHelper>();
@@ -596,7 +603,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper.For = ModelExpr
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("</div>\r\n                        <div class=\"input-group \">\r\n                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "6a2fb3a2c86a0202da03b28a6df5dde2857b558349580", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "6a2fb3a2c86a0202da03b28a6df5dde2857b558349781", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -621,7 +628,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                        </div>\r\n                        <div class=\"mb-3\">");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("span", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558351555", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("span", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558351756", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationMessageTagHelper>();
@@ -642,7 +649,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper.For = ModelExpr
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("</div>\r\n                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558353163", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2fb3a2c86a0202da03b28a6df5dde2857b558353364", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationSummaryTagHelper>();

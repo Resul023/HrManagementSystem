@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject UserManager<AppUser> _userManager
+@inject AppDbContext _context
 @{
     ViewData["Title"] = "Index";
 }
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
           integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
 }
 @model DashboardViewModel
@@ -28,6 +30,8 @@
         user = await _userManager.FindByNameAsync(User.Identity.Name);
 
     }
+    var departments = _context.Departments.ToList();
+    Random rnd = new Random();
 
 }
 <style>
@@ -105,7 +109,9 @@
                                 <div>Total Salary</div>
                                 @if (totalSalary > 999)
                                 {
+
                                     var result = (totalSalary / 1000).ToString() + "K";
+
                                     <h5 class="mb-0">@result</h5>
 
                                 }
@@ -127,7 +133,7 @@
                             <div class="icon text-center me-3"><i class="fa-solid fa-landmark"></i></div>
                             <div class="content">
                                 <div>Avg. Salary</div>
-                                <h5 class="mb-0">$@(totalSalary/ Model.Employees.Count())</h5>
+                                <h5 class="mb-0">$@Math.Round(totalSalary / Model.Employees.Count())</h5>
                             </div>
                         </div>
                     </div>
@@ -293,20 +299,41 @@
         new Chart(document.getElementById("pie-chart"), {
             type: 'pie',
             data: {
-                labels: ["Design", "Dev", "Seo",],
-                datasets: [{
-                    label: "Population (millions)",
-                    backgroundColor: ["#f68c1f", "#583D72", "#ded5c4"],
-                    data: [84.5, 10.2, 5.3]
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                    text: 'Income Analysis %'
-
-                }
-            }
+           @Html.Raw("labels: [")
+           @foreach (var dep in departments)
+           {
+               @Html.Raw(Json.Serialize(dep.DepartmentName) + ",")
+           }
+           @Html.Raw("],")
+           @Html.Raw("datasets: [")
+           @Html.Raw("{ label : " + Json.Serialize("Departments Overview") + ",")
+           @Html.Raw("backgroundColor :") @for(int i=0;i<departments.Count();i++)
+                                            {
+                                                @if(i==0){
+                                                    @Html.Raw("[ ")
+                                                }
+                                                @Html.Raw(Json.Serialize(@String.Format("#{0:X6}", rnd.Next(0x1000000))) + ",")
+                                                if(i == departments.Count()-1){
+                                                    @Html.Raw("],")
+                                                }
+                                            }
+           @Html.Raw("data :") @for(int i=0;i<departments.Count();i++)
+                                            {
+                                                @if(i==0){
+                                                    @Html.Raw("[ ")
+                                                }
+                                                @Html.Raw(_context.Users.Where(x=>x.DepartmentId == departments[i].Id).Count()+ ",")
+                                                if(i == departments.Count()-1){
+                                                    @Html.Raw("]")
+                                                }
+                                            }
+        @Html.Raw("}]")
+        },
+        options: {
+          title: {
+            display: true
+          }
+        }
         });
     </script>
     <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>

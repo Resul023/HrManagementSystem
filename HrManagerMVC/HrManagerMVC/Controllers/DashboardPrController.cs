@@ -1,6 +1,7 @@
 ﻿using HrManagerMVC.DAL;
 using HrManagerMVC.Models;
 using HrManagerMVC.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace HrManagerMVC.Controllers
 {
+    [Authorize(Roles = "Hr,Employee")]
     public class DashboardPrController : Controller
     {
         private readonly AppDbContext _context;
@@ -23,7 +25,7 @@ namespace HrManagerMVC.Controllers
             ViewBag.ActivePage = "dashboardpr";
             DashboardPrViewModel dashboardprVW = new DashboardPrViewModel
             {
-                Employees = _context.Users.Where(x => x.IsQuitted == false).Include(x => x.Gender).Include(x=>x.Warnings).Include(x => x.Status).Include(x => x.Department).Include(x => x.EmployeeProjects).ToList(),
+                Employees = _context.Users.Where(x => x.IsQuitted == false).Include(x => x.Gender).Include(x => x.Warnings).Include(x => x.Status).Include(x => x.Department).Include(x => x.EmployeeProjects).ToList(),
                 Projects = _context.Projects.Include(x => x.EmployeeProjects).ToList(),
                 Vacations = _context.Vacations.ToList(),
                 Warnings = _context.Warnings.ToList(),
@@ -33,22 +35,23 @@ namespace HrManagerMVC.Controllers
         [HttpPost]
         public IActionResult Index(Vacation vacation)
         {
-            if (vacation.StarDate>=vacation.EndDate)
+
+            if (vacation.StarDate >= vacation.EndDate)
             {
                 ModelState.AddModelError("", "Start date must be less than End date");
             }
-            if (vacation.StarDate < DateTime.UtcNow || vacation.EndDate<DateTime.UtcNow)
+            if ((vacation.StarDate < DateTime.UtcNow || vacation.EndDate < DateTime.UtcNow))
             {
                 ModelState.AddModelError("", "Check your date again");
             }
             foreach (var holiday in _context.Holidays)
             {
-                if (vacation.StarDate < holiday.EndDate || vacation.EndDate > holiday.StartDate)
+                if (vacation.StarDate < holiday.EndDate || vacation.EndDate < holiday.StartDate)
                 {
                     ModelState.AddModelError("", "Vacation time coincides with holiday time");
                 }
             }
-            if (!_context.Users.Any(x=>x.Id == vacation.EmployeeId))
+            if (!_context.Users.Any(x => x.Id == vacation.EmployeeId))
             {
                 ModelState.AddModelError("", "There are problem check it again");
             }
@@ -57,7 +60,7 @@ namespace HrManagerMVC.Controllers
             {
                 DashboardPrViewModel dashboardprVW = new DashboardPrViewModel
                 {
-                    Employees = _context.Users.Where(x => x.IsQuitted == false).Include(x => x.Gender).Include(x => x.Status).Include(x => x.Department).Include(x => x.EmployeeProjects).ToList(),
+                    Employees = _context.Users.Where(x => x.IsQuitted == false).Include(x => x.Gender).Include(x => x.Warnings).Include(x => x.Status).Include(x => x.Department).Include(x => x.EmployeeProjects).ToList(),
                     Projects = _context.Projects.Include(x => x.EmployeeProjects).ToList(),
                     Vacations = _context.Vacations.ToList(),
                     Warnings = _context.Warnings.ToList(),
@@ -67,16 +70,24 @@ namespace HrManagerMVC.Controllers
             vacation.VacationAnswer = "Null";
             _context.Vacations.Add(vacation);
             _context.SaveChanges();
-            return RedirectToAction("index","dashboardpr");
+
+            return RedirectToAction("index");
         }
         public void CheckVacation(Vacation vacation)
         {
-            foreach (var item in _context.Vacations)
+            
+            if (_context.Vacations.Any(x=>x.EmployeeId == vacation.EmployeeId))
             {
-                if (!(vacation.StarDate > item.EndDate))
+                foreach (var vacationDb in _context.Vacations)
                 {
-                    ModelState.AddModelError("", "Your vacation's times coincide");
-                    break;
+                    if (vacation.EmployeeId == vacationDb.EmployeeId)
+                    {
+                        if ((vacation.StarDate < vacationDb.EndDate) || (vacation.EndDate > vacationDb.StarDate))
+                        {
+                            ModelState.AddModelError("", "Your vacation's times coincide");
+                            break;
+                        }
+                    }
                 }
             }
         }

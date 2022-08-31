@@ -1,5 +1,6 @@
 ﻿using HrManagerMVC.DAL;
 using HrManagerMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace HrManagerMVC.Controllers
 {
+    [Authorize(Roles = "Hr")]
+
     public class DepartmentsController : Controller
     {
         private readonly AppDbContext _context;

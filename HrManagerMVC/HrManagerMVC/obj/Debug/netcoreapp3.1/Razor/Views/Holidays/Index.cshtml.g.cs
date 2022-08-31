@@ -33,8 +33,15 @@ using HrManagerMVC.ViewModel;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\User\Desktop\Final Project-Backend\HrManagerMVC\HrManagerMVC\Views\_ViewImports.cshtml"
+using HrManagerMVC.DAL;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"75f3a722ac847a9a77069a007bc8eba3c97f5978", @"/Views/Holidays/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"acb941a7da423774d6832b780a09d3978c510f4c", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"33e6b80ee8d40eadfa1dfaa751f20235f6d0783a", @"/Views/_ViewImports.cshtml")]
     public class Views_Holidays_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<HolidayViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Holidays", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -156,7 +163,7 @@ using HrManagerMVC.ViewModel;
                         <div class=""col-12 list-header d-flex"">
                             <div class=""card-text"">Holidays List</div>
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "75f3a722ac847a9a77069a007bc8eba3c97f59789569", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "75f3a722ac847a9a77069a007bc8eba3c97f59789770", async() => {
                 WriteLiteral("\r\n                                Add\r\n                            ");
             }
             );
@@ -222,7 +229,7 @@ using HrManagerMVC.ViewModel;
 #line hidden
 #nullable disable
             WriteLiteral("</td>\r\n                                            <th>\r\n                                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "75f3a722ac847a9a77069a007bc8eba3c97f597813263", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "75f3a722ac847a9a77069a007bc8eba3c97f597813464", async() => {
                 WriteLiteral("\r\n                                                    <i class=\"fa-solid fa-marker\"></i>\r\n                                                ");
             }
             );
@@ -268,7 +275,7 @@ AddHtmlAttributeValue(" ", 4935, item.Id, 4936, 8, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n\r\n                                               \r\n                                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "75f3a722ac847a9a77069a007bc8eba3c97f597816730", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "75f3a722ac847a9a77069a007bc8eba3c97f597816931", async() => {
                 WriteLiteral("<i class=\"fa-solid fa-trash\"></i>");
             }
             );

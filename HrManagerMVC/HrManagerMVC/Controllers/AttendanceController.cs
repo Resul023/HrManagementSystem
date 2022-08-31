@@ -1,6 +1,7 @@
 ﻿using HrManagerMVC.DAL;
 using HrManagerMVC.Models;
 using HrManagerMVC.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace HrManagerMVC.Controllers
 {
+    [Authorize(Roles = "Hr")]
     public class AttendanceController : Controller
     {
         private readonly AppDbContext _context;
@@ -62,7 +64,7 @@ namespace HrManagerMVC.Controllers
                 }
                 foreach (var vacation in _context.Vacations)
                 {
-                    if (vacation.EmployeeId == attendances.EmployeeId && vacation.VacationAnswer == "True")
+                    if (vacation.EmployeeId == attendances.EmployeeId && vacation.VacationAnswer == "False")
                     {
                         attendances.IsActive = true;
                     }

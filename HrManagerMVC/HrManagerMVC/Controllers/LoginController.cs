@@ -12,6 +12,7 @@ using System.Web.Helpers;
 
 namespace HrManagerMVC.Controllers
 {
+    
     public class LoginController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

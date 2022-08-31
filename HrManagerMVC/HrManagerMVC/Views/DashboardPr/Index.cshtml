@@ -37,7 +37,11 @@
     }
     var modelUser = Model.Employees.Find(x => x.UserName == user.UserName);
 }
-
+<style>
+    .caption-top {
+        max-width: 295px !important;
+    }
+</style>
 <div id="main-content" class="dashboard">
     <div class="container-fluid">
         <div class="row">
@@ -165,7 +169,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">WarningCount-</th>
-                                    <td>@user.Warnings.Count()</td>
+                                    <td>@_userManager.FindByIdAsync(user.Id).Result.Warnings.Count()</td>
                                 </tr>
                             </tbody>
                         </table>

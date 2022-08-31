@@ -1,6 +1,7 @@
 ﻿using HrManagerMVC.DAL;
 using HrManagerMVC.Models;
 using HrManagerMVC.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace HrManagerMVC.Controllers
 {
+    [Authorize(Roles = "Hr,Employee")]
     public class ProjectPrController : Controller
     {
         private readonly AppDbContext _context;

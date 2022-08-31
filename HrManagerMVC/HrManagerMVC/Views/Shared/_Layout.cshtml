@@ -233,14 +233,14 @@
                                     <span>DashboardPr</span>
                                 </a>
                             </li>
-                            <li class="list-item d-flex">
+                            <li class="list-item d-flex @(ViewBag.ActivePage =="chatapp"?"active-itemlist":"")">
                                 <a asp-controller="Chatapp" asp-action="index" class="d-flex">
                                     <i class="fa-solid fa-message"></i>
                                     <span>ChatApp</span>
                                 </a>
                             </li>
-                            <li class="list-item d-flex">
-                                <a asp-controller="Projects" asp-action="index" class="d-flex">
+                            <li class="list-item d-flex @(ViewBag.ActivePage =="projectspr"?"active-itemlist":"")">
+                                <a asp-controller="ProjectPr" asp-action="index" class="d-flex">
                                     <i class="fa-solid fa-folder-tree"></i>
                                     <span>Projects</span>
                                 </a>
@@ -287,7 +287,9 @@
             let imageData = $(this).attr("data-photo");
             let imageWorker = $("#avatar-image").attr("src", `/upload/employee/${imageData}`)
             let connectionAtData = $(this).attr("data-connectionAt")
-            let connectionAtText = $("#connectionAt").text(`Lastest active: ${connectionAtData} mins ago`);
+            console.log(connectionAtData)
+            let connectionAtText = $("#connectionAt").text(`Lastest active: ${connectionAtData != "0,1" ? `${connectionAtData} mins ago` : `Not active`}`);
+            console.log(connectionAtText)
             let userName = $(this).attr("data-messagefrom")
             let id = $(this).attr("data-id");
             let fullname = $(this).attr("data-name");
@@ -314,13 +316,28 @@
                 .then(data => {
                     var temp = ""
                     data.forEach(x => {
-
-                        temp += ` <li class="clearfix">
+                        let check = false;
+                        if (id === x.fromUserId) {
+                            check = true;
+                        }
+                        if (!check) {
+                            temp += ` <li class="clearfix">
                                     <div class="message-data">
-                                        <span class="message-data-time">${x.createdAt.slice(11, 16)}</span>
+                                        <span class="message-data-time">${x.createdAt.slice(11, 16)}: ${userName}</span>
                                     </div>
                                     <div class="message other-message float-left">${x.text}</div>
                                 </li>`
+                        }
+                        else {
+                            temp += ` <li class="clearfix">
+                                    <div class="message-data">
+                                        <span class="message-data-time">${x.createdAt.slice(11, 16)}: ${fullname}</span>
+                                    </div>
+                                    <div class="message other-message float-left">${x.text}</div>
+                                </li>`
+                            
+                        }
+                       
                         
                     })
                     messageList.append(temp);

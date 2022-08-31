@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace HrManagerMVC.Controllers
 {
-    //[Authorize]
+    [Authorize(Roles = "Hr")]
     public class DashboardController : Controller
     {
         private readonly AppDbContext _context;

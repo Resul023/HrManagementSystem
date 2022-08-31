@@ -1,5 +1,6 @@
 ﻿using HrManagerMVC.DAL;
 using HrManagerMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace HrManagerMVC.Controllers
 {
+    [Authorize(Roles = "Hr")]
     public class EventsController : Controller
     {
         private readonly AppDbContext _context;

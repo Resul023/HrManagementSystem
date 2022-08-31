@@ -57,7 +57,7 @@
                 </h2>
                 <ul class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="index.html">Lucid</a></li>
-                    <li class="breadcrumb-item active">Holidays</li>
+                    <li class="breadcrumb-item active">Project</li>
                 </ul>
             </div>
             <div class="end-dashboard col-md-6 col-sm-12">
@@ -106,12 +106,12 @@
                                         <th>End Date</th>
                                         <th>Team</th>
                                         <th>Desc</th>
-                                        @if (user.IsDepartmentHead == true)
+                                        @if (user.IsDepartmentHead == true && Model.Projects.Any(x=>x.EmployeeProjects.Any(x => x.EmployeeId == user.Id)))
                                         {
                                             <th>Action</th>
                                         }
                                     </tr>
-                                </thead>
+                                </thead>    
                                 <tbody>
                                     @foreach (var projects in Model.Projects)
                                     {
@@ -186,7 +186,7 @@
                                                 </div>
 
                                             </td>
-                                            @if (user.IsDepartmentHead == true)
+                                            @if (user.IsDepartmentHead == true && projects.EmployeeProjects.Any(x=>x.EmployeeId == user.Id))
                                             {
                                                 if (projects.IsDone == false && projects.EndDate > DateTime.UtcNow)
                                                 {
@@ -203,7 +203,7 @@
                                                 }
                                                 else
                                                 {
-                                                    <p>dilqem</p>
+                                                    
                                                 }
 
                                             }

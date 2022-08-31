@@ -1,6 +1,7 @@
 ﻿using HrManagerMVC.DAL;
 using HrManagerMVC.Models;
 using HrManagerMVC.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace HrManagerMVC.Controllers
 {
+    [Authorize(Roles = "Hr")]
     public class HolidaysController : Controller
     {
         private readonly AppDbContext _context;

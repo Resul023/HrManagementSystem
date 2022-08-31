@@ -2,6 +2,7 @@
 using HrManagerMVC.Helper;
 using HrManagerMVC.Models;
 using HrManagerMVC.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -14,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace HrManagerMVC.Controllers
 {
+    [Authorize(Roles = "Hr")]
     public class EmployeesController : Controller
     {
         private readonly AppDbContext _context;
